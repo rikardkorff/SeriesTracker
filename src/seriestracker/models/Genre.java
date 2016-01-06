@@ -1,4 +1,4 @@
-package seriestacker.models;
+package seriestracker.models;
 
 /**
  * Created by rkorff on 2015-07-12.

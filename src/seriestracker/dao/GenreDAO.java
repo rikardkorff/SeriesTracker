@@ -1,8 +1,8 @@
 package seriestracker.dao;
 
-import seriestacker.models.Genre;
-
 import java.util.Collection;
+
+import seriestracker.models.Genre;
 
 /**
  * Created by rkorff on 2015-07-12.

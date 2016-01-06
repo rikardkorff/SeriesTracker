@@ -1,7 +1,7 @@
 package seriestracker.dao.seriestracker.dao.sqlserver;
 
-import seriestacker.models.Genre;
 import seriestracker.dao.GenreDAO;
+import seriestracker.models.Genre;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

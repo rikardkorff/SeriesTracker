@@ -1,9 +1,9 @@
 package seriestracker.dao;
 
-import seriestacker.models.Season;
-import seriestacker.models.Series;
-
 import java.util.Collection;
+
+import seriestracker.models.Season;
+import seriestracker.models.Series;
 
 /**
  * Created by rkorff on 2015-07-12.

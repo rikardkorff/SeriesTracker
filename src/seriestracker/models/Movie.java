@@ -1,4 +1,7 @@
-package seriestacker.models;
+package seriestracker.models;
+
+import java.nio.file.Path;
+import java.util.Date;
 
 /**
  * Created by rkorff on 2015-07-12.
@@ -9,6 +12,9 @@ public class Movie {
     private Genre Genre;
     private int Year;
     private String Plot;
+    private Path FileName;
+    private Boolean Watched;
+    private Date WatchDate;
 
     public int getId(){
         return this.Id;
@@ -48,6 +54,30 @@ public class Movie {
 
     public void setPlot(String plot){
         this.Plot = plot;
+    }
+
+    public Path getFileName(){
+    	return this.FileName;
+    }
+
+    public void setFileName(Path filename){
+    	this.FileName = filename;
+    }
+
+    public Boolean getWatched(){
+    	return this.Watched;
+    }
+
+    public void setWatched(Boolean watched){
+    	this.Watched = watched;
+    }
+
+    public Date getWatchDate(){
+    	return this.WatchDate;
+    }
+
+    public void setWatchDate(Date watchDate){
+    	this.WatchDate = watchDate;
     }
 
     public Movie(){

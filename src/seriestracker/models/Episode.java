@@ -1,4 +1,4 @@
-package seriestacker.models;
+package seriestracker.models;
 
 import java.nio.file.Path;
 import java.util.Calendar;
@@ -65,7 +65,7 @@ public class Episode {
         return this.WatchDate;
     }
 
-    private void setWatchDate(Date date){
+    public void setWatchDate(Date date){
         this.WatchDate = date;
     }
 

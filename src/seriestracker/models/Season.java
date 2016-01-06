@@ -1,4 +1,4 @@
-package seriestacker.models;
+package seriestracker.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
