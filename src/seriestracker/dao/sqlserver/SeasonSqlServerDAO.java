@@ -1,4 +1,4 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,6 +57,8 @@ public class SeasonSqlServerDAO extends GenericSqlServerDAO implements SeasonDAO
 
 					return season;
 				}
+			}catch (SQLException e){
+				e.printStackTrace();
 			}
 		}
 		return null;

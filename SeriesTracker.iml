@@ -7,14 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://E:/Software/Microsoft JDBC Driver 4.2 for SQL Server/sqljdbc_4.2/enu/sqljdbc.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="sqljdbc4" level="project" />
+    <orderEntry type="library" name="x64" level="project" />
   </component>
 </module>

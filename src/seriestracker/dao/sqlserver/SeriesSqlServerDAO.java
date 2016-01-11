@@ -1,11 +1,10 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import seriestracker.dao.SeriesDAO;
-import seriestracker.models.Genre;
 import seriestracker.models.Series;
 
 public class SeriesSqlServerDAO extends GenericSqlServerDAO implements SeriesDAO {

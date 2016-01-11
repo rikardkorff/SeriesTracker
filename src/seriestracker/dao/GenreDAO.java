@@ -9,8 +9,8 @@ import seriestracker.models.Genre;
  */
 public interface GenreDAO {
     Collection<Genre> findAll();
-    Genre findByDescription(String description);
-    Genre create(Genre genre);
-    Genre update(Genre genre);
+    Genre findByName(String name);
+    void create(Genre genre);
+    void update(Genre genre);
     void delete(Genre genre);
 }

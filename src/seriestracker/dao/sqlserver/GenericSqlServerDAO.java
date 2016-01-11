@@ -1,4 +1,4 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 /**
  * Created by rkorff on 2015-07-12.
@@ -25,12 +25,16 @@ public abstract class GenericSqlServerDAO {
     }
 
     protected void Connect() throws SQLException{
-        String connectionUrl = Config.getString("SQLServerProtocol")
-                + Config.getString("SQLServerDataBase")
-                + Config.getString("SQLServerAuthentication");
+        try {
+            String connectionUrl = Config.getString("SQLServerDriverProtocol")
+                    + Config.getString("SQLServerDatabaseName")
+                    + Config.getString("SQLServerAuthentication");
 
-        //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        this.setConnection(DriverManager.getConnection(connectionUrl));
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            this.setConnection(DriverManager.getConnection(connectionUrl));
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
     public GenericSqlServerDAO(){

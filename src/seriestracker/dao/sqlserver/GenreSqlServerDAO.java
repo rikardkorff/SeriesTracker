@@ -1,4 +1,4 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 import seriestracker.dao.GenreDAO;
 import seriestracker.models.Genre;
@@ -15,15 +15,14 @@ import java.util.Collection;
 public class GenreSqlServerDAO extends GenericSqlServerDAO implements GenreDAO{
     @Override
     public Collection<Genre> findAll() {
-        String sqlQuery = "SELECT Id, Description FROM Genre";
+        String sqlQuery = "SELECT Id, Name FROM Genre";
         ArrayList<Genre> genres = new ArrayList<Genre>();
         try {
             Statement statement = this.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
 
             while (resultSet.next()) {
-                Genre genre = new Genre(resultSet.getInt(0));
-                genre.setName(resultSet.getString(1));
+                Genre genre = new Genre(resultSet.getInt("Id"), resultSet.getString("Name"));
                 genres.add(genre);
             }
             resultSet.close();
@@ -35,15 +34,14 @@ public class GenreSqlServerDAO extends GenericSqlServerDAO implements GenreDAO{
     }
 
     @Override
-    public Genre findByDescription(String description) {
-        String sqlQuery = "SELECT Id, Description FROM Genre WHERE Description = '" + description + "'";
+    public Genre findByName(String name) {
+        String sqlQuery = "SELECT Id, Name FROM Genre WHERE Name = '" + name + "'";
         try {
             Statement statement = this.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
 
             if (resultSet.next()) {
-                Genre genre = new Genre(resultSet.getInt(0));
-                genre.setName(resultSet.getString(1));
+                Genre genre = new Genre(resultSet.getInt("Id"), resultSet.getString("Name"));
                 resultSet.close();
                 statement.close();
                 return genre;
@@ -55,10 +53,10 @@ public class GenreSqlServerDAO extends GenericSqlServerDAO implements GenreDAO{
     }
 
     @Override
-    public Genre create(Genre genre) {
-        if (genre.getId() == 0 && !genre.getName().isEmpty()) {
-            String sqlQuery = "INSERT INTO Genre(Description) " +
-                                "OUTPUT INSERTED.Id, INSERTED.Description " +
+    public void create(Genre genre) {
+        if (genre.getId() == 0 && genre.getName() != null && !genre.getName().isEmpty()) {
+            String sqlQuery = "INSERT INTO Genre(Name) " +
+                                "OUTPUT INSERTED.Id, INSERTED.Name " +
                                 "VALUES('" + genre.getName() + "')";
 
             try{
@@ -66,42 +64,42 @@ public class GenreSqlServerDAO extends GenericSqlServerDAO implements GenreDAO{
                 ResultSet resultSet = statement.executeQuery(sqlQuery);
 
                 if (resultSet.next()){
-                    Genre newGenre = new Genre(resultSet.getInt(0));
-                    newGenre.setName(resultSet.getString(1));
+                    genre.setId(resultSet.getInt("Id"));
+                    genre.setName(resultSet.getString("Name"));
+                    genre.setHasChanged(false);
+
                     resultSet.close();
                     statement.close();
-                    return newGenre;
                 }
             }catch (SQLException e){
                 e.printStackTrace();
             }
         }
-        return genre;
     }
 
     @Override
-    public Genre update(Genre genre) {
+    public void update(Genre genre) {
         if (genre.getId() > 0 && !genre.getName().isEmpty()){
             String sqlQuery = "UPDATE Genre " +
-                                "SET Description = '" + genre.getName() + "'" +
-                                "OUTPUT INSERTED.Id, INSERTED.Description" +
+                                "SET Name = '" + genre.getName() + "' " +
+                                "OUTPUT INSERTED.Id, INSERTED.Name " +
                                 "WHERE Id = " + genre.getId();
             try{
                 Statement statement = this.getConnection().createStatement();
                 ResultSet resultSet = statement.executeQuery(sqlQuery);
 
                 if (resultSet.next()){
-                    Genre newGenre = new Genre(resultSet.getInt(0));
-                    newGenre.setName(resultSet.getString(1));
+                    genre.setId(resultSet.getInt("Id"));
+                    genre.setName(resultSet.getString("Name"));
+                    genre.setHasChanged(false);
+
                     resultSet.close();
                     statement.close();
-                    return newGenre;
                 }
             }catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return genre;
     }
 
     @Override

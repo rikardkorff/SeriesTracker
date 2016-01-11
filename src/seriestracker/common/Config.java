@@ -7,10 +7,10 @@ import java.util.ResourceBundle;
  * Created by rkorff on 2015-07-12.
  */
 public class Config {
-    private static final String BUNDLE_NAME = "config";
+    private static final String BUNDLE_NAME = "seriestracker.config";
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
-    private Config(){
+    public Config(){
 
     }
 

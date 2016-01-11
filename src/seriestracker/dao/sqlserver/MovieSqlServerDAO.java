@@ -1,4 +1,4 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 import java.nio.file.Paths;
 import java.sql.ResultSet;

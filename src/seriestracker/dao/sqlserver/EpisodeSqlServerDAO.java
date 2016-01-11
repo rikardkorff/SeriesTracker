@@ -1,4 +1,4 @@
-package seriestracker.dao.seriestracker.dao.sqlserver;
+package seriestracker.dao.sqlserver;
 
 import java.nio.file.Paths;
 import java.sql.ResultSet;
@@ -9,7 +9,6 @@ import java.util.Collection;
 
 import seriestracker.dao.EpisodeDAO;
 import seriestracker.models.Episode;
-import seriestracker.models.Genre;
 
 public class EpisodeSqlServerDAO extends GenericSqlServerDAO implements EpisodeDAO {
 
